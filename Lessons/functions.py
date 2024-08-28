@@ -7,3 +7,5 @@ def sum(num1: int, num2: int) -> int:
 
 
 print(sum(num1=5, num2=8))  # <- 5 and 8 are the arguments of this function call
+
+"""CL04 Practice Writing Functions"""
