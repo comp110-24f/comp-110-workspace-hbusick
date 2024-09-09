@@ -41,3 +41,9 @@ elif distance <= 15:
     print("you get 15 points")
 else:
     print("sorry no points")
+
+
+if distance <= 5:
+    print("yes")
+else:
+    print("no")
