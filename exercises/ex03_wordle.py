@@ -4,7 +4,7 @@ __author__: str = "730563704"
 
 
 def main(secret: str) -> None:
-    "The entrypoint of the program and main game loop."
+    "The entrypoint of the program and main game loop"
     total_turns = 6  # Define total turns allowed
     current_turn = 1  # initialize player turn count
     while current_turn <= total_turns:  # Update index within loop
@@ -28,6 +28,7 @@ def main(secret: str) -> None:
 
 
 def input_guess(secret_word_len: int) -> str:
+    "Takes a integer and prompts the user for a word of that many characters, rtrn str"
     word = str(input(f"Enter a {secret_word_len} character word: "))
     while len(word) != secret_word_len:  # user misinput case
         word = str(input(f"That wasn't {secret_word_len} chars! Try again: "))
@@ -35,6 +36,7 @@ def input_guess(secret_word_len: int) -> str:
 
 
 def contains_char(secret_word: str, char_guess: str) -> bool:
+    "Takes a word and character and returns true if the character is found within word"
     assert len(char_guess) == 1  # force
     idx = 0  # initialize index
     for char in secret_word:  # char index
@@ -47,6 +49,7 @@ def contains_char(secret_word: str, char_guess: str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str:
+    "Assigns an emoji depending on what indexes of guess are found in secret"
     assert len(guess) == len(secret)  # force lengths
     WHITE_BOX: str = "\U00002B1C"
     GREEN_BOX: str = "\U0001f7E9"  # codes
