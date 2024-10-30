@@ -15,6 +15,7 @@ def invert(a: dict[str, str]) -> dict[str, str]:
 
 
 def favorite_color(a: dict[str, str]) -> str:
+    "Returns the most popular from a dict of names and colors"
     col_ct: dict[str, int] = {}  # empty dict for storing colors and their counts
     for i in a:  # for each key value pair in dict a
         color = a[i]  # assign color to that keys value
@@ -35,6 +36,7 @@ def favorite_color(a: dict[str, str]) -> str:
 
 
 def count(a: list[str]) -> dict[str, int]:
+    "Makes a dictionary of the number of times a val appears in a list"
     empt_dict: dict[str, int] = {}  # initialize empty dict for storing
     for i in a:  # for each key value pair in a
         if i in empt_dict:  # if the value already keyed in our empty dictionary
@@ -45,6 +47,7 @@ def count(a: list[str]) -> dict[str, int]:
 
 
 def alphabetizer(a: list[str]) -> dict[str, list[str]]:
+    "Makes a dictionary with start letters and corresponding words"
     new_dict: dict[str, list[str]] = {}  # initialize new dictionary
     for i in a:  # for every elemennt of list a
         lead_let = i[
@@ -63,6 +66,7 @@ def alphabetizer(a: list[str]) -> dict[str, list[str]]:
 
 
 def update_attendance(attended: dict[str, list[str]], day: str, stud: str) -> None:
+    "Updates a dictionary if a student appeared on a day"
     if day not in attended:  # if day does not exist in attended dict
         attended[day] = []  # initialize new list for day
     if stud not in attended[day]:  # if a student has not had their attendece recorded
