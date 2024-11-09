@@ -1,9 +1,12 @@
 """File to define Bear class."""
 
+
 class Bear:
-    
+
     def __init__(self):
+        self.age = 0
+        self.hunter_age = 0
         return None
-    
+
     def one_day(self):
         return None
