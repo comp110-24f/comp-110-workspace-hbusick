@@ -52,7 +52,7 @@ class River:
         for bear in self.bears:  # for each bear in the river
             if bear.hunger_score >= 0:  # if their hunger score is nonneg
                 bears_to_live.append(bear)  # add that bear to the live list
-        return None
+        self.bears = bears_to_live  # update the list of bears with only the surviving
 
     def repopulate_fish(self):
         "repopulate fish at a ratio of 4 new to 2 existing"
@@ -113,3 +113,4 @@ class River:
             count < amount and self.fish
         ):  # while we have not removed more than told/allowed
             self.fish.pop(0)  # remove the frontmost fish
+            count += 1  # Add 1 to the indexing variable
