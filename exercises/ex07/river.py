@@ -57,15 +57,19 @@ class River:
     def repopulate_fish(self):
         "repopulate fish at a ratio of 4 new to 2 existing"
         new_fish: int = (len(self.fish) // 2) * 4  # get num of new fish created
-        self.fish = [Fish()] * new_fish  # run Fish times num of new fish to populate
-        # assign these new fish to self.fish
+        while new_fish > 0:  # while there are still fish to be added
+            self.fish.append(Fish())  # add new fish by calling Fish()
+            new_fish = -1  # deduct this fish from the value calc for new_fish
         return None
 
     def repopulate_bears(self):
         "repopulate bears at a ratio of 1 new to 2 existing"
         new_bears: int = len(self.bears) // 2  # get the num of new bears to be created
-        self.bears = [Bear()] * new_bears  # Run Bear times the number of new bears
-        # Assign these new bears to self.bears
+        while new_bears > 0:  # while there are still bears left to be added
+            self.bears.append(Bear())  # add them to self.bears by running Bear()
+            new_bears -= (
+                1  # once added, remove that bear by subtracting 1 from new bear
+            )
         return None
 
     def view_river(self):
