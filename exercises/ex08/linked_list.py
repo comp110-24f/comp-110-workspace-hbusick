@@ -1,18 +1,21 @@
-"""EX08 Linked List Utils"""
+"""EX08 Linked List Utils."""
 
 from __future__ import annotations
 
 
 class Node:
+    """Node Class."""
+
     value: int
     next: Node | None
 
     def __init__(self, value: int, next: Node | None):
+        """Init method for Node class."""
         self.value = value
         self.next = next
 
     def __str__(self) -> str:
-        """Produce a string representation of a linked list"""
+        """Produce a string representation of a linked list."""
         rest: str = "TODO"
         # figure out the rest of the list
         if self.next is None:
@@ -29,7 +32,7 @@ courses: Node = Node(110, Node(210, Node(301, None)))
 
 
 def to_str(head: Node | None) -> str:
-    """Represent a linked list as a str"""
+    """Represent a linked list as a str."""
     if head is None:
         return "None"
     else:
@@ -42,7 +45,7 @@ print(to_str(courses))
 
 
 def last(head: Node) -> int:
-    """Return the last value of a nonempty list"""
+    """Return the last value of a nonempty list."""
     # Base case
     if head.next is None:
         return head.value
@@ -56,7 +59,7 @@ print(last(courses))
 
 
 def recursive_range(start: int, end: int) -> Node | None:
-    """Build a list recursively from start to end"""
+    """Build a list recursively from start to end."""
     # Handle the edge case where start is greater than end
     if start > end:
         raise ValueError("Invalid aguments, start greather than end")
@@ -78,7 +81,7 @@ print(a_list)
 
 
 def value_at(head: Node | None, index: int) -> int:
-    """recursievely returns val of node at an index"""
+    """Recursievely returns val of node at an index."""
     if head is None:  # edge case for an empty list
         raise IndexError("Index is out of bounds on the list.")
     if index == 0:  # base case when index = 0, return that val
@@ -89,16 +92,32 @@ def value_at(head: Node | None, index: int) -> int:
 
 
 def max(head: Node | None) -> int:
-    """returns maximum value of a linked list"""
+    """Returns maximum value of a linked list."""
     if head is None:  # edge case for an empty list
-        raise IndexError("Cannot call max with None")
+        raise ValueError("Cannot call max with None")
     if head.next is None:  # if we do not have a further node to move to
         return head.value  # return the val we are currently at, no change
-    rest_val: int = max(head.next)  # recursively call max on the rest of the list
-    # define the varialbe rest to be the result of the next value
-    # we can then use an if statement to check whether or not this value is less than
-    # the current head.value
-    if head.value > rest_val:  # if our current val is the greatest out of the list
-        return head.value  # our max is then the val we are at
-    else:  # otherwise our maximum value is just the number we found calling max within
-        return rest_val
+    max_rest: int = max(head.next)  # recursive call to max for next node
+    if head.value > max_rest:  # if current val greater than rest of vals
+        return head.value  # return that val
+    return max_rest  # otherwise return the val obtianed from max(head.next)
+
+
+def linkify(items: list[int]) -> Node | None:
+    """Takes a list of ints and returns a linked list of nodes."""
+    # base case for empty list
+    if len(items) == 0:
+        return None
+    else:  # create node for item at idx 0, linkify then links this to the rest of list
+        # use items[1:] to complete this process for all items until all linked
+        return Node(items[0], linkify(items[1:]))
+
+
+def scale(head: Node | None, factor: int) -> Node | None:
+    """Return a new linked list of Nodes which are scaled by the factor."""
+    # If the list is empty we return nothing
+    if head is None:
+        return None
+    # Create a new node for each scaled value and link it to the rest of the list
+    else:  # define head.value as scaled by the factor, then scale for the next node
+        return Node(head.value * factor, scale(head.next, factor))
